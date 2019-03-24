@@ -1,12 +1,11 @@
+.idea/
 target/
-pom.xml.tag
-pom.xml.releaseBackup
-pom.xml.versionsBackup
-pom.xml.next
-release.properties
-dependency-reduced-pom.xml
-buildNumber.properties
-.mvn/timing.properties
-
-# Avoid ignoring Maven wrapper jar file (.jar files are usually ignored)
-!/.mvn/wrapper/maven-wrapper.jar
+*.iml
+.classpath
+.project
+.settings
+.checkstyle
+.DS_Store
+LOG_PATH_IS_UNDEFINED
+/target-eclipse/
+deploy-test.sh
