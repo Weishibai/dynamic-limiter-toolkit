@@ -1,4 +1,4 @@
-package com.nicklaus.circuitbreaker.wrapper;
+package com.github.nicklaus.circuitbreaker.wrapper;
 
 import java.util.function.Function;
 import java.util.function.Supplier;
@@ -17,17 +17,17 @@ import io.vavr.CheckedFunction1;
  */
 public class CircuitBreakerFacade {
 
-    private final CircuitBreakerConfig config;
+    private final CircuitBreakerConfig defaultConfig;
 
     private final CircuitBreakerRegistry registry;
 
-    public CircuitBreakerFacade(CircuitBreakerConfig config, CircuitBreakerRegistry registry) {
-        this.config = config;
+    public CircuitBreakerFacade(CircuitBreakerConfig defaultConfig, CircuitBreakerRegistry registry) {
+        this.defaultConfig = defaultConfig;
         this.registry = registry;
     }
 
     public CircuitBreakerConfig config() {
-        return config;
+        return defaultConfig;
     }
 
     public CircuitBreakerRegistry registry() {
@@ -35,7 +35,7 @@ public class CircuitBreakerFacade {
     }
 
     public CircuitBreaker ofCircuitBreaker(String cbName) {
-        return registry.circuitBreaker(cbName);
+        return registry.circuitBreaker(cbName, defaultConfig);
     }
 
     public <T> CheckedFunction0<T> decorateCheckedSupplier(String cbName, CheckedFunction0<T> supplier) {

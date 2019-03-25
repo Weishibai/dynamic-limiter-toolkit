@@ -1,8 +1,8 @@
-package com.nicklaus.circuitbreaker.factory;
+package com.github.nicklaus.circuitbreaker.factory;
 
 import java.time.Duration;
 
-import com.nicklaus.circuitbreaker.wrapper.CircuitBreakerFacade;
+import com.github.nicklaus.circuitbreaker.wrapper.CircuitBreakerFacade;
 
 import io.github.resilience4j.circuitbreaker.CircuitBreakerConfig;
 import io.github.resilience4j.circuitbreaker.CircuitBreakerRegistry;

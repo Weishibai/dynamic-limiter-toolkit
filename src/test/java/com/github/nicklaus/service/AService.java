@@ -1,4 +1,4 @@
-package com.nicklaus.circuitbreaker.service;
+package com.github.nicklaus.service;
 
 import java.util.concurrent.ThreadLocalRandom;
 

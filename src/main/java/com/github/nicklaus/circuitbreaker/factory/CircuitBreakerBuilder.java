@@ -1,4 +1,4 @@
-package com.nicklaus.circuitbreaker.factory;
+package com.github.nicklaus.circuitbreaker.factory;
 
 import java.util.function.Predicate;
 

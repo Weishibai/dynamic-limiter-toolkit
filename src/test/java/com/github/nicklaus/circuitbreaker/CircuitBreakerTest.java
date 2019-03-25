@@ -1,4 +1,4 @@
-package com.nicklaus.circuitbreaker;
+package com.github.nicklaus.circuitbreaker;
 
 import java.util.function.Function;
 import java.util.function.Supplier;
@@ -8,10 +8,10 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import com.nicklaus.circuitbreaker.factory.CircuitBreakerBuilder;
-import com.nicklaus.circuitbreaker.factory.CircuitBreakerFactory;
-import com.nicklaus.circuitbreaker.service.AService;
-import com.nicklaus.circuitbreaker.wrapper.CircuitBreakerFacade;
+import com.github.nicklaus.circuitbreaker.factory.CircuitBreakerBuilder;
+import com.github.nicklaus.circuitbreaker.factory.CircuitBreakerFactory;
+import com.github.nicklaus.service.AService;
+import com.github.nicklaus.circuitbreaker.wrapper.CircuitBreakerFacade;
 
 import io.github.resilience4j.circuitbreaker.CircuitBreaker;
 import io.github.resilience4j.circuitbreaker.CircuitBreakerOpenException;
