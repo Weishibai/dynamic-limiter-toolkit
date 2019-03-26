@@ -8,5 +8,12 @@ package com.github.nicklaus.limiter.boot;
  */
 public interface BootService {
 
+    void prepare();
+
+    void boot();
+
+    void onComplete();
+
+    void shutdown();
 
 }

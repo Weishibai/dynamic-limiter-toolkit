@@ -27,6 +27,8 @@ public class RateLimiterTest {
 
     private RateLimiterFacade facade;
 
+    private RateLimiterFacade dynamicFacade;
+
     private AService aService;
 
     @Before
@@ -36,10 +38,15 @@ public class RateLimiterTest {
                 .limitRefreshPeriod(1000)
                 .timeoutDuration(25));
 
+        dynamicFacade = RateLimiterFactory.facade(RateLimiterBuilder.newBuilder()
+                .limitForPeriod(10)
+                .limitRefreshPeriod(1000)
+                .timeoutDuration(25), true);
+
         aService = new AService();
     }
 
-    @Test
+//    @Test
     public void testRateLimiter() {
         final RateLimiter rateLimiter = facade.ofRateLimiter("rlTest");
         final CheckedRunnable runnable = RateLimiter.decorateCheckedRunnable(rateLimiter, () -> aService.doA("test"));
@@ -49,6 +56,20 @@ public class RateLimiterTest {
                     .onSuccess(v -> System.out.println("execute success"))
                     .onFailure(e -> System.out.println(e.getMessage()));
         }
+    }
+
+//    @Test
+    public void testDynamicRateLimiter() {
+        final RateLimiter rateLimiter = dynamicFacade.ofRateLimiter("rlTest");
+
+        final CheckedRunnable runnable = RateLimiter.decorateCheckedRunnable(rateLimiter, () -> aService.doA("test"));
+
+        for (int i = 0; i < 1000; i++) {
+            Try.run(runnable)
+                    .onSuccess(v -> System.out.println("execute success"))
+                    .onFailure(e -> System.out.println(e.getMessage()));
+        }
+
     }
 
 }

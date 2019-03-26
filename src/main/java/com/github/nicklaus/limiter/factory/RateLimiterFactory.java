@@ -32,7 +32,11 @@ public class RateLimiterFactory {
     }
 
     public static RateLimiterFacade facade(RateLimiterBuilder builder) {
+        return facade(builder, false);
+    }
+
+    public static RateLimiterFacade facade(RateLimiterBuilder builder, boolean dynamic) {
         final RateLimiterConfig config = createConfig(builder);
-        return new RateLimiterFacade(RateLimiterRegistry.of(config), config);
+        return new RateLimiterFacade(RateLimiterRegistry.of(config), config, dynamic);
     }
 }
